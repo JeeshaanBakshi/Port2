@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html class="overflow-x-hidden scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeeshaan Singh Bakshi</title>
+    <meta name="description" content="Jeeshaan Bakshi Portfolio" />
+    <meta name="author" content="Jeeshaan Bakshi" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@100;300;400;500;700&display=swap">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Custom cursor styles */
+        .cursor {
+            position: fixed;
+            width: 16px;
+            height: 16px;
+            background: #f97316;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 50;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+        }
+        
+        .cursor-outline {
+            position: fixed;
+            width: 64px;
+            height: 64px;
+            border: 1px solid #f97316;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 50;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        
+        /* Hide cursors on mobile */
+        @media (max-width: 1024px) {
+            .cursor, .cursor-outline {
+                display: none;
+            }
+        }
+        
+        /* Custom styles for orange accents */
+        .text-orange { color: #f97316; }
+        .bg-orange { background-color: #f97316; }
+        .border-orange { border-color: #f97316; }
+        
+        /* Header positioning */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 320px;
+            background: #1f2937;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8rem 2rem;
+            text-align: center;
+            z-index: 40;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Mobile header hidden by default */
+        @media (max-width: 1024px) {
+            header {
+                transform: translateX(-100%);
+            }
+            header.show {
+                transform: translateX(0);
+            }
+            main {
+                margin-left: 0 !important;
+            }
+        }
+        
+        /* Main content offset */
+        main {
+            margin-left: 320px;
+        }
+        
+        /* Section styling */
+        section {
+            min-height: 100vh;
+            padding: 4rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.875rem 3rem;
+            background: #f97316;
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .btn:hover {
+            background: #1f2937;
+            letter-spacing: 0.15em;
+        }
+        
+        /* Project box styling */
+        .project-box {
+            position: relative;
+            overflow: hidden;
+            border: 8px solid white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: white;
+            height: 24rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-box:hover img {
+            width: 75%;
+            height: 75%;
+        }
+        
+        .project-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .project-icons {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .project-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background: #e5e7eb;
+            border-radius: 0.5rem;
+            color: #374151;
+            font-size: 1.125rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .project-icons a:hover {
+            background: #f97316;
+            color: white;
+        }
+        
+        /* Contact form styling */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #374151;
+            background: transparent;
+            color: #374151;
+            font-size: 1.125rem;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+            outline: none;
+            text-transform: capitalize;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-bottom-color: #f97316;
+        }
+        
+        .contact-form textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body class="bg-orange-50 font-sans">
+    <!-- Custom cursors -->
+    <div class="cursor"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Mobile menu button -->
+    <button id="menu-bars" class="fixed top-4 right-4 z-50 bg-orange text-white p-3 rounded-lg text-3xl lg:hidden">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Header -->
+    <header id="header">
+        <a href="#home" class="text-3xl font-bold text-white uppercase mb-8">
+            <span class="text-orange">Jeeshaan </span>Bakshi
+        </a>
+        
+        <nav class="flex flex-col space-y-8">
+            <a href="#home" class="text-2xl text-white hover:text-orange hover:tracking-wider transition-all duration-200 capitalize">Home</a>
+            <a href="#about" class="text-2xl text-white hover:text-orange hover:tracking-wider transition-all duration-200 capitalize">who is jeeshaan</a>
+            <a href="#arduino-projects" class="text-2xl text-white hover:text-orange hover:tracking-wider transition-all duration-200 capitalize">Arduino Projects</a>
+            <a href="#portfolio" class="text-2xl text-white hover:text-orange hover:tracking-wider transition-all duration-200 capitalize">web Projects</a>
+            <a href="#contact" class="text-2xl text-white hover:text-orange hover:tracking-wider transition-all duration-200 capitalize">Contact</a>
+        </nav>
+        
+        <div class="flex space-x-4 mt-8">
+            <a href="https://www.facebook.com/jeeshaan.bakshi.9" target="_blank" class="text-2xl text-white hover:text-orange transition-colors">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-2xl text-white hover:text-orange transition-colors">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/jeeshaanbakshi/" target="_blank" class="text-2xl text-white hover:text-orange transition-colors">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jeeshaan-bakshi-01a8a2229/" target="_blank" class="text-2xl text-white hover:text-orange transition-colors">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="flex items-center">
+            <div class="flex flex-wrap items-center gap-6 w-full">
+                <div class="flex-1 min-w-96">
+                    <span class="text-3xl text-orange">
+                        hi <span class="text-gray-800">there</span><span class="text-black">...</span>
+                    </span>
+                    <h3 class="text-5xl text-gray-800 uppercase font-bold my-4">
+                        i am <span class="text-orange">Jeeshaan Bakshi</span>
+                    </h3>
+                    <p class="text-lg text-gray-600 py-2 leading-relaxed">
+                        I'm a tech enthusiast with a growing passion for AI, innovation, and building things that actually do stuff. My journey started with Arduino, where I turned simple circuits into smart systems
+                    </p>
+                    <a href="#about" class="btn">about me</a>
+                </div>
+                
+                <div class="flex-1 min-w-96">
+                    <img src="https://cdn.dribbble.com/users/1292677/screenshots/6139167/avento_still_2x.gif?compress=1&resize=400x300" 
+                         alt="Developer Animation" 
+                         class="w-full h-full object-cover"
+                         style="clip-path: polygon(37% 0, 100% 0, 100% 100%, 0 100%);">
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-40 px-20 mx-20">
+            <h1 class="text-5xl font-bold text-gray-800 uppercase mb-12 pb-4">
+                who am <span class="text-orange">i</span>?
+            </h1>
+            
+            <div class="flex flex-wrap gap-6 pb-8">
+                <div class="flex-1 min-w-96">
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-700">
+                            I'm a passionate tech enthusiast who loves bringing ideas to life through code and circuits. My journey began with building smart systems using Arduino. From motion detection to RFID access, I found joy in solving real problems with creative hardware solutions.
+                        </p>
+                        <p class="text-lg text-gray-700">
+                            On the software side, I delved into web development, designing responsive, user-friendly websites with modern UI features. These experiences sparked a deeper interest in AI and emerging technologies.
+                        </p>
+                        <p class="text-lg text-gray-700">
+                            I'm aiming to pursue Computer Science at a top university where I can dive deeper into AI, machine learning, and innovation that positively impacts the world.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-6 py-4 mb-12">
+                        <div class="flex-1 min-w-48">
+                            <p class="text-lg text-gray-700">
+                                <span class="text-orange font-semibold">age :</span> 17
+                            </p>
+                        </div>
+                        <div class="flex-1 min-w-48">
+                            <p class="text-lg text-gray-700">
+                                <span class="text-orange font-semibold">phone :</span> 9811382252
+                            </p>
+                            <p class="text-lg text-gray-700 normal-case">
+                                <span class="text-orange font-semibold">email :</span> jeeshaanbakshi@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <a href="#arduino-projects" class="btn">see what i made</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arduino Projects Section -->
+        <section id="arduino-projects">
+            <h1 class="text-5xl font-bold text-gray-800 uppercase mb-12 pb-4">
+                <span class="text-orange">Arduino</span> Projects
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="RFID Locker System">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">RFID Locker System</h3>
+                    <div class="project-icons">
+                        <a href="https://github.com/jeeshaanbakshi/locker-system" target="_blank">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Ultrasonic Radar">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">Ultrasonic Radar</h3>
+                    <div class="project-icons">
+                        <a href="https://github.com/jeeshaanbakshi/ultrasonic-radar" target="_blank">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Distance Measuring Device">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">Distance Measuring Device</h3>
+                    <div class="project-icons">
+                        <a href="https://github.com/jeeshaanbakshi/distance-measurer" target="_blank">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Web Projects Section -->
+        <section id="portfolio">
+            <h1 class="text-5xl font-bold text-gray-800 uppercase mb-12 pb-4">
+                <span class="text-orange">web</span> projects
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Project 01">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">projects 01</h3>
+                    <div class="project-icons">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-share"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Project 02">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">projects 02</h3>
+                    <div class="project-icons">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-share"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Project 03">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">projects 03</h3>
+                    <div class="project-icons">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-share"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Project 04">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">projects 04</h3>
+                    <div class="project-icons">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-share"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-box">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Project 05">
+                    <h3 class="absolute bottom-2 left-4 text-2xl uppercase font-bold text-gray-700">projects 05</h3>
+                    <div class="project-icons">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-share"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h1 class="text-5xl font-bold text-gray-800 uppercase mb-12 pb-4">
+                contact <span class="text-orange">me</span>
+            </h1>
+            
+            <!-- Contact Info -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="text-center p-8 bg-white rounded shadow-lg">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-orange text-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 font-semibold mb-2">my email</h3>
+                    <p class="text-lg text-gray-600 normal-case">jeeshaanbakshi@gmail.com</p>
+                </div>
+                
+                <div class="text-center p-8 bg-white rounded shadow-lg">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-orange text-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 font-semibold mb-2">my number</h3>
+                    <p class="text-lg text-gray-600">9811382252</p>
+                </div>
+                
+                <div class="text-center p-8 bg-white rounded shadow-lg">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-orange text-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-map text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 font-semibold mb-2">my address</h3>
+                    <p class="text-lg text-gray-600">inderpuri, delhi, india-110012</p>
+                </div>
+            </div>
+            
+            <!-- Contact Form and Map -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <form class="contact-form bg-white p-8 shadow-lg rounded">
+                    <input type="text" placeholder="name" required>
+                    <input type="email" placeholder="email" required>
+                    <input type="tel" placeholder="number" required>
+                    <textarea placeholder="Message" rows="10" required></textarea>
+                    <button type="submit" class="btn">send message</button>
+                </form>
+                
+                <iframe class="w-full h-full min-h-96 border-8 border-white shadow-lg rounded"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.211332384497!2d77.13933316916818!3d28.628178603235344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d02d8036705db%3A0x6f10e60f235c3c04!2sInder%20Puri%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1639474492565!5m2!1sen!2sin"
+                        allowfullscreen loading="lazy" title="Location Map"></iframe>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="mt-8 text-2xl py-10 text-center text-gray-600 bg-white">
+        created by <span class="text-orange">Jeeshaan Bakshi</span> | all rights reserved!
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuBars = document.getElementById('menu-bars');
+        const header = document.getElementById('header');
+        
+        menuBars.addEventListener('click', () => {
+            header.classList.toggle('show');
+        });
+        
+        // Close menu when clicking on nav links (mobile)
+        const navLinks = header.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                header.classList.remove('show');
+            });
+        });
+        
+        // Custom cursor functionality (desktop only)
+        if (window.innerWidth > 1024) {
+            const cursor = document.querySelector('.cursor');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                cursorOutline.style.left = e.clientX + 'px';
+                cursorOutline.style.top = e.clientY + 'px';
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

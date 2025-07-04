@@ -1,0 +1,932 @@
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeeshaan Singh Bakshi - Portfolio</title>
+    <meta name="description" content="Computer Science Student | Arduino Enthusiast | Web Developer">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.4)' },
+                            '50%': { boxShadow: '0 0 40px rgba(249, 115, 22, 0.8)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url(https://db.onlinewebfonts.com/c/b461b7ace66f0d83a3146b642ad9baff?family=LeJeuneDeck-Regular);
+
+        @font-face {
+            font-family: "LeJeuneDeck-Regular";
+            src: url("https://db.onlinewebfonts.com/t/b461b7ace66f0d83a3146b642ad9baff.eot");
+            src: url("https://db.onlinewebfonts.com/t/b461b7ace66f0d83a3146b642ad9baff.eot?#iefix")format("embedded-opentype"),
+                url("https://db.onlinewebfonts.com/t/b461b7ace66f0d83a3146b642ad9baff.woff2")format("woff2"),
+                url("https://db.onlinewebfonts.com/t/b461b7ace66f0d83a3146b642ad9baff.woff")format("woff"),
+                url("https://db.onlinewebfonts.com/t/b461b7ace66f0d83a3146b642ad9baff.ttf")format("truetype"),
+                url("https://db.onlinewebfonts.com/t/b461b7ace66f0d83a3146b642ad9baff.svg#LeJeuneDeck-Regular")format("svg");
+        }
+
+        /* *{
+    font-family: "LeJeuneDeck-Regular";
+} */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #0ea5e9, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .code-block {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #334155;
+            padding: 12px 16px;
+            border-bottom: 1px solid #475569;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ef4444;
+        }
+
+        .dot-yellow {
+            background: #eab308;
+        }
+
+        .dot-green {
+            background: #22c55e;
+        }
+
+        .line-numbers {
+            background: #2d3748;
+            color: #718096;
+            padding: 16px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            min-width: 50px;
+            text-align: right;
+            user-select: none;
+        }
+
+        .code-content {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .syntax-keyword {
+            color: #c792ea;
+        }
+
+        .syntax-string {
+            color: #c3e88d;
+        }
+
+        .syntax-comment {
+            color: #546e7a;
+            font-style: italic;
+        }
+
+        .syntax-function {
+            color: #82aaff;
+        }
+
+        .syntax-number {
+            color: #f78c6c;
+        }
+
+        .circuit-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .circuit-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 25% 25%, #0ea5e9 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #f97316 2px, transparent 2px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        /* Floating Elements Animation */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating:nth-child(even) {
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Smooth Scroll Offset */
+        .scroll-offset {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 font-sans text-slate-800 overflow-x-hidden">
+    <!-- Mobile Navigation Button -->
+    <button id="mobile-nav-toggle"
+        class="fixed top-6 right-6 z-50 lg:hidden bg-accent-500 text-white p-3 rounded-xl shadow-lg hover:bg-accent-600 transition-colors">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <nav id="mobile-nav" class="mobile-nav fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-40 lg:hidden">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-gradient">Menu</h2>
+                <button id="mobile-nav-close" class="text-slate-500 hover:text-slate-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <ul class="space-y-4">
+                <li><a href="#home"
+                        class="block py-3 px-4 text-lg font-medium text-slate-700 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">Home</a>
+                </li>
+                <li><a href="#about"
+                        class="block py-3 px-4 text-lg font-medium text-slate-700 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">About</a>
+                </li>
+                <li><a href="#arduino"
+                        class="block py-3 px-4 text-lg font-medium text-slate-700 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">Arduino
+                        Projects</a></li>
+                <li><a href="#web"
+                        class="block py-3 px-4 text-lg font-medium text-slate-700 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">Web
+                        Projects</a></li>
+                <li><a href="#contact"
+                        class="block py-3 px-4 text-lg font-medium text-slate-700 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-gradient">Jeeshaan Singh Bakshi</div>
+                <ul class="flex space-x-8">
+                    <li><a href="#home"
+                            class="text-slate-700 hover:text-primary-600 font-medium transition-colors">Home</a></li>
+                    <li><a href="#about"
+                            class="text-slate-700 hover:text-primary-600 font-medium transition-colors">About</a></li>
+                    <li><a href="#arduino"
+                            class="text-slate-700 hover:text-primary-600 font-medium transition-colors">Arduino
+                            Projects</a></li>
+                    <li><a href="#web" class="text-slate-700 hover:text-primary-600 font-medium transition-colors">Web
+                            Projects</a></li>
+                    <li><a href="#contact"
+                            class="text-slate-700 hover:text-primary-600 font-medium transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="scroll-offset min-h-screen flex items-center justify-center relative overflow-hidden pt-20 lg:pt-0">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating absolute top-20 left-10 w-20 h-20 bg-primary-200 rounded-full opacity-60"></div>
+            <div class="floating absolute top-40 right-20 w-16 h-16 bg-accent-200 rounded-full opacity-60"></div>
+            <div class="floating absolute bottom-40 left-20 w-24 h-24 bg-primary-300 rounded-full opacity-40"></div>
+            <div class="floating absolute bottom-20 right-10 w-12 h-12 bg-accent-300 rounded-full opacity-60"></div>
+        </div>
+
+        <div class="container mx-auto px-6 z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate-slide-up">
+                    <p class="text-accent-600 font-semibold text-lg mb-4">Hello, I'm</p>
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        <span class="text-gradient">Jeeshaan</span>
+                        <br>Singh Bakshi
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        I'm a Passionate CS student exploring AI, Python, Arduino, web development, and quantitative
+                        finance — building smart solutions that connect hardware, software, and data.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#about"
+                            class="bg-gradient-to-r from-primary-500 to-accent-500 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            About Me
+                        </a>
+                        <a href="#arduino"
+                            class="border-2 border-primary-500 text-primary-600 px-8 py-4 rounded-xl font-semibold hover:bg-primary-500 hover:text-white transition-all duration-300">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end animate-fade-in">
+                    <div class="relative">
+                        <div
+                            class="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary-400 to-accent-400 animate-pulse-glow">
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <!-- <i class="fas fa-microchip text-8xl text-white"></i> -->
+                            <img src="/src/images/portfolio-profile-circle.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="scroll-offset py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">About <span class="text-gradient">Me</span></h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Driven by curiosity and powered by innovation
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+                        <h3 class="text-2xl font-bold mb-6 text-primary-700">My Journey</h3>
+                        <div class="space-y-4 text-slate-600 leading-relaxed">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Hi! I’m a 17-year-old aspiring computer scientist who stumbled into tech the day I
+                                    made an LED blink with an Arduino — and I’ve been hooked ever since.</li>
+                                <li>I love building things that beep, blink, or move — ideally all at once (and
+                                    preferably without smoke).</li>
+                                <li>What started as basic circuits evolved into full projects: smart lockers, radar
+                                    systems, and websites that actually respond (unlike some people).</li>
+                                <li>Even my Python scripts are now doing math I’d rather not talk about.</li>
+                                <li>For me, it’s all about how a few lines of code can control real-world stuff. It
+                                    feels like magic — just with more bugs and less wand-waving.</li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift">
+                        <h4 class="text-xl font-bold mb-4 text-accent-600">Personal Info</h4>
+                        <div class="space-y-3 text-slate-600">
+                            <p><span class="font-semibold">Age:</span> 17</p>
+                            <!-- <p><span class="font-semibold">Location:</span> Delhi, India</p> -->
+                            <p><span class="font-semibold">Email:</span> jeeshaanbakshi@gmail.com</p>
+                            <!-- <p><span class="font-semibold">Phone:</span> +91 9811382252</p> -->
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift">
+                        <h4 class="text-xl font-bold mb-4 text-accent-600">Technical Skills</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">Arduino</span>
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-primary-500 to-accent-500 h-2 rounded-full"
+                                        style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">JavaScript</span>
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-primary-500 to-accent-500 h-2 rounded-full"
+                                        style="width: 55%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">HTML/CSS</span>
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-primary-500 to-accent-500 h-2 rounded-full"
+                                        style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">Python</span>
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-primary-500 to-accent-500 h-2 rounded-full"
+                                        style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arduino Projects Section -->
+    <section id="arduino" class="scroll-offset py-20 lg:py-32 bg-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Arduino <span class="text-gradient">Projects</span></h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Hardware meets software - innovative solutions built from scratch
+                </p>
+            </div>
+
+            <!-- Project 1: RFID Locker System -->
+            <div class="mb-20">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                    <div class="lg:grid lg:grid-cols-2">
+                        <div class="p-8 lg:p-12">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-lock text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold text-slate-800">The Brainy Scale</h3>
+                            </div>
+
+                            <div class="space-y-6 text-slate-600 leading-relaxed">
+                                <p>Built a digital distance measuring device using an Arduino Uno, i2c ultrasonic
+                                    sensor, and LCD display. The system accurately calculates and displays the distance
+                                    between the sensor and a nearby object in real-time.
+                                </p>
+                                <p>
+                                    🛠 Hardware: Arduino Uno, Ultrasonic Sensor (HC-SR04), I2C LCD Display</p>
+
+                                <div class="bg-slate-50 p-6 rounded-xl">
+                                    <h4 class="font-bold text-slate-800 mb-3">🌐 Functionality:
+                                    </h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>The ultrasonic sensor emits sound waves and measures the time taken
+                                                for the echo to return after hitting an object.
+                                            </span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>Using basic kinematic equations and the speed of sound in air, the
+                                                distance is calculated with precision.
+                                            </span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>The result is displayed on the LCD screen for real-time monitoring.
+
+                                            </span>
+                                        </li>
+                                        <!-- <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>Buzzer alerts for security</span>
+                                        </li> -->
+                                    </ul>
+                                </div>
+
+                                <div class="flex flex-wrap gap-4">
+                                    <a href="https://github.com/JeeshaanBakshi/Brainy-Scale" target="_blank"
+                                        class="bg-slate-800 text-white px-6 py-3 rounded-xl hover:bg-slate-700 transition-colors">
+                                        <i class="fab fa-github mr-2"></i>View Code and Circuit
+                                    </a>
+                                    <button onclick="toggleDemo('rfid')"
+                                        class="border-2 border-primary-500 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-500 hover:text-white transition-colors">
+                                        <i class="fas fa-play mr-2"></i>View Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-8 lg:p-12 bg-gradient-to-br from-slate-50 to-slate-100">
+                            <div class="space-y-6">
+                                <div class="bg-white rounded-xl p-4 shadow-lg ">
+                                    <img src="/src/images/image copy 2.png" alt="The Brainy Scale"
+                                        class="w-full h-90 object-cover rounded-lg mb-4">
+                                    <p class="text-sm text-slate-600 text-center">The Brainy Scale</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Project 2: Ultrasonic Radar -->
+            <div class="mb-20">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                    <div class="lg:grid lg:grid-cols-2">
+                        <div class="order-2 lg:order-1 p-8 lg:p-12 bg-gradient-to-br from-slate-50 to-slate-100">
+                            <div class="space-y-6">
+                                <div class="bg-white rounded-xl p-4 shadow-lg">
+                                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=400&fit=crop"
+                                        alt="Ultrasonic Radar System" class="w-full h-48 object-cover rounded-lg mb-4">
+                                    <p class="text-sm text-slate-600 text-center">Ultrasonic Radar Detection System</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-1 lg:order-2 p-8 lg:p-12">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-broadcast-tower text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold text-slate-800">Ultrasonic Radar</h3>
+                            </div>
+
+                            <div class="space-y-6 text-slate-600 leading-relaxed">
+                                <p>
+                                    An innovative radar system using ultrasonic sensors to detect objects and visualize
+                                    their positions in real-time. This project showcases my skills in sensor integration
+                                    and data visualization.
+                                </p>
+
+                                <div class="bg-slate-50 p-6 rounded-xl">
+                                    <h4 class="font-bold text-slate-800 mb-3">Technical Highlights:</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>360° rotating ultrasonic sensor</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>Real-time distance measurement</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>Processing IDE visualization</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check text-accent-500"></i>
+                                            <span>Object detection and mapping</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="flex flex-wrap gap-4">
+                                    <a href="https://github.com/jeeshaanbakshi/ultrasonic-radar" target="_blank"
+                                        class="bg-slate-800 text-white px-6 py-3 rounded-xl hover:bg-slate-700 transition-colors">
+                                        <i class="fab fa-github mr-2"></i>View Code
+                                    </a>
+                                    <button onclick="toggleDemo('radar')"
+                                        class="border-2 border-accent-500 text-accent-600 px-6 py-3 rounded-xl hover:bg-accent-500 hover:text-white transition-colors">
+                                        <i class="fas fa-play mr-2"></i>View Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Project 3: Distance Measuring Device -->
+                    <div class="mb-20">
+                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                            <div class="lg:grid lg:grid-cols-2">
+                                <div class="p-8 lg:p-12">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div
+                                            class="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
+                                            <i class="fas fa-ruler text-white text-xl"></i>
+                                        </div>
+                                        <h3 class="text-3xl font-bold text-slate-800">Distance Measuring Device</h3>
+                                    </div>
+
+                                    <div class="space-y-6 text-slate-600 leading-relaxed">
+                                        <p>
+                                            A precise distance measurement tool using ultrasonic technology with digital
+                                            display.
+                                            This project demonstrates practical application of sensor technology in
+                                            measurement
+                                            systems.
+                                        </p>
+
+                                        <div class="bg-slate-50 p-6 rounded-xl">
+                                            <h4 class="font-bold text-slate-800 mb-3">Project Features:</h4>
+                                            <ul class="space-y-2">
+                                                <li class="flex items-center gap-2">
+                                                    <i class="fas fa-check text-primary-500"></i>
+                                                    <span>High-precision distance measurement</span>
+                                                </li>
+                                                <li class="flex items-center gap-2">
+                                                    <i class="fas fa-check text-primary-500"></i>
+                                                    <span>LCD display with real-time updates</span>
+                                                </li>
+                                                <li class="flex items-center gap-2">
+                                                    <i class="fas fa-check text-primary-500"></i>
+                                                    <span>Multiple unit conversions (cm, inches)</span>
+                                                </li>
+                                                <li class="flex items-center gap-2">
+                                                    <i class="fas fa-check text-primary-500"></i>
+                                                    <span>Battery-powered portable design</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="flex flex-wrap gap-4">
+                                            <a href="https://github.com/jeeshaanbakshi/distance-meter" target="_blank"
+                                                class="bg-slate-800 text-white px-6 py-3 rounded-xl hover:bg-slate-700 transition-colors">
+                                                <i class="fab fa-github mr-2"></i>View Code
+                                            </a>
+                                            <button onclick="toggleDemo('distance')"
+                                                class="border-2 border-primary-500 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-500 hover:text-white transition-colors">
+                                                <i class="fas fa-play mr-2"></i>View Demo
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-8 lg:p-12 bg-gradient-to-br from-slate-50 to-slate-100">
+                                    <div class="space-y-6">
+                                        <div class="bg-white rounded-xl p-4 shadow-lg">
+                                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&h=400&fit=crop"
+                                                alt="Distance Measuring Device"
+                                                class="w-full h-48 object-cover rounded-lg mb-4">
+                                            <p class="text-sm text-slate-600 text-center">Portable Distance Measuring
+                                                Device</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Expandable Demo Section -->
+
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- Web Projects Section -->
+    <section id="web" class="scroll-offset py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Web <span class="text-gradient">Projects</span></h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Modern web applications built with cutting-edge technologies
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-primary-400 to-accent-400 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-6xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">E-Commerce Platform</h3>
+                        <p class="text-slate-600 mb-4">A full-featured online shopping platform with user
+                            authentication, cart functionality, and payment integration.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-600 hover:text-primary-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="text-slate-600 hover:text-slate-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-accent-400 to-primary-400 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-tasks text-6xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Task Management App</h3>
+                        <p class="text-slate-600 mb-4">A collaborative task management tool with real-time updates, team
+                            collaboration, and progress tracking.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-sm">Firebase</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Tailwind</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-600 hover:text-primary-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="text-slate-600 hover:text-slate-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-primary-400 to-accent-400 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-6xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Analytics Dashboard</h3>
+                        <p class="text-slate-600 mb-4">A comprehensive analytics dashboard with data visualization,
+                            reporting, and real-time monitoring capabilities.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-sm">D3.js</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Express</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-600 hover:text-primary-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="text-slate-600 hover:text-slate-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="text-2xl font-bold text-gradient mb-4">Jeeshaan Singh Bakshi</div>
+                <p class="text-slate-400 mb-6">Building the future, one project at a time.</p>
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="https://www.linkedin.com/in/jeeshaan-bakshi-01a8a2229/" target="_blank"
+                        class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/jeeshaanbakshi" target="_blank"
+                        class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/jeeshaanbakshi/" target="_blank"
+                        class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/jeeshaan.bakshi.9" target="_blank"
+                        class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-slate-700 pt-8">
+                    <p class="text-slate-400">&copy; 2024 Jeeshaan Singh Bakshi. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll Arrow -->
+    <div id="scroll-top"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white cursor-pointer opacity-0 invisible transition-all duration-300 hover:scale-110 z-30">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Navigation
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scroll-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.opacity = '1';
+                scrollTopBtn.style.visibility = 'visible';
+            } else {
+                scrollTopBtn.style.opacity = '0';
+                scrollTopBtn.style.visibility = 'hidden';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Demo Toggle Functions
+        function toggleDemo(projectId) {
+            const demo = document.getElementById(projectId + '-demo');
+            const isHidden = demo.classList.contains('hidden');
+
+            // Hide all demos first
+            document.querySelectorAll('[id$="-demo"]').forEach(d => {
+                d.classList.add('hidden');
+            });
+
+            // Show the clicked demo if it was hidden
+            if (isHidden) {
+                demo.classList.remove('hidden');
+                demo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.hover-lift, .glass-effect').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Enhanced Radar Animation
+        function animateRadar() {
+            const radarElements = document.querySelectorAll('.animate-pulse-glow');
+            let angle = 0;
+            let direction = 1;
+
+            setInterval(() => {
+                angle += direction * 2;
+
+                if (angle & gt;= 180) {
+                direction = -1;
+            } else if (angle & lt;= 0) {
+                direction = 1;
+            }
+
+            radarElements.forEach(element => {
+                element.style.transform = `rotate(${angle}deg)`;
+            });
+        }, 50);
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateRadar();
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+        });
+    </script>
+</body>
+
+</html>
